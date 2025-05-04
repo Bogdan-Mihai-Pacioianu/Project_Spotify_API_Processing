@@ -1,4 +1,3 @@
-import spotipy
 from dotenv import load_dotenv
 from requests import post, get, delete
 import os
@@ -12,6 +11,8 @@ class ServiceSpotify:
     client_id = os.getenv('SPOTIFY_CLIENT_ID')
     client_secrets = os.getenv('SPOTIFY_CLIENT_SECRETS')
     redirected_url = os.getenv('SPOTIFY_TOKEN_URL')
+    get_playlist_url = os.getenv('GET_PLAYLIST_URL')
+    get_artist_url = os.getenv('GET_ARTIST_URL')
 
     def get_token(self):
         auth_string = self.client_id + ':' + self.client_secrets
@@ -31,5 +32,26 @@ class ServiceSpotify:
         return token
 
     def get_auth_header(self, token):
-        return {'Authorization': 'Bearer ' + token}
+        return {'Authorization': f'Bearer {token}'}
 
+    def get_artist(self, token, artist_id):
+        try:
+            if not token or not artist_id:
+                raise ValueError("Token and artist_id are required")
+            
+            url = self.get_artist_url + artist_id
+            headers = self.get_auth_header(token)
+            results = get(url, headers=headers)
+            json_response = json.loads(results.content)
+            return json_response
+        
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON: {e}")
+            return None
+        
+    def get_playlists(self, token, playlist_id):
+        url = self.get_playlist_url + playlist_id
+        headers = self.get_auth_header(token)
+        result = get(url, headers=headers)
+        json_response = json.loads(result.content)
+        return json_response
