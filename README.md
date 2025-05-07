@@ -1,19 +1,5 @@
-Project Structure
-The project is organized as follows:
-
-src/ - Application source code
-      auth.py - Functions for authentication with the Spotify API
-      spotify_api.py - Functions for interacting with the API
-      data_processing.py - Data processing and saving
-      lineage.py - Data traceability management
-      main.py - Main script
-      analysis.py - Analysis and visualizations
-      api.py - Flask API for data exposure
-data/ - Directories for storing data
-raw/ - Raw data extracted from the API
-processed/ - Processed and analyzed data
-lineage/ - Data traceability information
-
+spotify_e2e_project
+![spotify_e2e_tree_structure](https://github.com/user-attachments/assets/769a1caa-8596-4ce9-84ca-db060afc8a32)
 
 
 ![spotify_e2e_architecture](https://github.com/user-attachments/assets/b713a6b3-0a17-4f9c-a57c-2fa29ef972ab)
