@@ -13,3 +13,6 @@ data/ - Directories for storing data
 raw/ - Raw data extracted from the API
 processed/ - Processed and analyzed data
 lineage/ - Data traceability information
+
+
+![spotify_e2e_architecture](https://github.com/user-attachments/assets/b713a6b3-0a17-4f9c-a57c-2fa29ef972ab)
